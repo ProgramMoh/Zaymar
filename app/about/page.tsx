@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+import { getAssetPath } from '@/lib/utils'
 
 const values = [
   {
@@ -33,12 +33,10 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-b from-[#1d1d1f] to-[#2d2d2f] overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-about.jpg"
+          <img
+            src={getAssetPath('/images/hero-about.jpg')}
             alt=""
-            fill
-            className="object-cover opacity-30"
-            priority
+            className="absolute inset-0 w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1d1d1f]/80 to-[#2d2d2f]/70"></div>
         </div>

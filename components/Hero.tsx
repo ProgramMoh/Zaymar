@@ -2,19 +2,17 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+import { getAssetPath } from '@/lib/utils'
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-[#1d1d1f] via-[#2d2d2f] to-[#1d1d1f] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-main.jpg"
+        <img
+          src={getAssetPath('/images/hero-main.jpg')}
           alt=""
-          fill
-          className="object-cover opacity-30"
-          priority
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1d1d1f]/80 via-[#2d2d2f]/70 to-[#1d1d1f]/80"></div>
       </div>
