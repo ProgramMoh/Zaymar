@@ -81,7 +81,7 @@ export default function PricingPage() {
               animate={{ opacity: 1, y: 0 }}
               className="mb-8 p-4 bg-[#1d1d1f] text-white rounded-2xl text-center"
             >
-              <p className="mb-2">You have {cart.plan.name} in your cart</p>
+              <p className="mb-2">You have successfully added {cart.plan.name} plan to your cart. Check some of our add-ons below to grow your business to broader horizons!</p>
               <Link
                 href="/cart"
                 className="text-sm underline hover:no-underline"
