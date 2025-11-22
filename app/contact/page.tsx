@@ -35,7 +35,7 @@ export default function ContactPage() {
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-b from-[#1d1d1f] to-[#2d2d2f] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src={getAssetPath('/images/hero-contact.jpg')}
+            src={getAssetPath('/images/herocontact.jpg')}
             alt=""
             className="absolute inset-0 w-full h-full object-cover opacity-30"
           />

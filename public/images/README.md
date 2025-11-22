@@ -10,19 +10,19 @@ Place all generated images in this directory. Use the prompts below with Google'
 ## Images to Generate
 
 ### Hero Images
-1. **hero-main.jpg** - Main hero background
+1. **heromain.jpg** - Main hero background
    - Prompt: "Abstract modern gradient background with dark tones, subtle geometric patterns, minimalist design, professional marketing agency aesthetic, dark navy and charcoal colors, soft lighting, high quality, 4k"
 
-2. **hero-services.jpg** - Services page hero
+2. **heroservices.jpg** - Services page hero
    - Prompt: "Modern abstract visualization of digital marketing services, dark background with glowing elements, minimalist design, professional, tech-forward aesthetic, dark tones with subtle blue/purple accents"
 
-3. **hero-about.jpg** - About page hero
+3. **heroabout.jpg** - About page hero
    - Prompt: "Abstract representation of creativity and strategy, dark sophisticated background, minimalist geometric shapes, professional business aesthetic, dark charcoal and deep blue tones"
 
-4. **hero-pricing.jpg** - Pricing page hero
+4. **heropricing.jpg** - Pricing page hero
    - Prompt: "Modern abstract background representing growth and scaling, dark elegant tones, minimalist design, professional marketing agency style, subtle gradient from dark to lighter dark"
 
-5. **hero-contact.jpg** - Contact page hero
+5. **herocontact.jpg** - Contact page hero
    - Prompt: "Abstract connection and communication visualization, dark professional background, minimalist design, subtle network patterns, modern business aesthetic, dark tones"
 
 ### Service Icons/Illustrations
@@ -62,11 +62,11 @@ Place all generated images in this directory. Use the prompts below with Google'
 ```
 public/
   images/
-    hero-main.jpg
-    hero-services.jpg
-    hero-about.jpg
-    hero-pricing.jpg
-    hero-contact.jpg
+    heromain.jpg
+    heroeservices.jpg
+    heroabout.jpg
+    heropricing.jpg
+    herocontact.jpg
     service-brand-identity.jpg
     service-web-design.jpg
     service-social-media.jpg

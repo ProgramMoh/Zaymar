@@ -10,11 +10,11 @@ All images should be placed in: `/public/images/`
 I've created a comprehensive guide in `/public/images/README.md` with all the prompts you need. Here's a quick summary:
 
 #### Hero Images (Required - 5 images)
-1. **hero-main.jpg** - Main homepage hero
-2. **hero-services.jpg** - Services page hero
-3. **hero-about.jpg** - About page hero
-4. **hero-pricing.jpg** - Pricing page hero
-5. **hero-contact.jpg** - Contact page hero
+1. **heromain.jpg** - Main homepage hero
+2. **heroservices.jpg** - Services page hero
+3. **heroabout.jpg** - About page hero
+4. **heropricing.jpg** - Pricing page hero
+5. **herocontact.jpg** - Contact page hero
 
 #### Service Images (Optional - 6 images)
 - service-brand-identity.jpg

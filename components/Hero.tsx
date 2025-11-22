@@ -10,7 +10,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src={getAssetPath('/images/hero-main.jpg')}
+          src={getAssetPath('/images/heromain.jpg')}
           alt=""
           className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
