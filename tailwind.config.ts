@@ -22,6 +22,10 @@ const config: Config = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        brand: {
+          red: '#dc2626', // Red for logo gradient
+          purple: '#7c3aed', // Purple for logo gradient
+        },
       },
       fontFamily: {
         sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],

@@ -16,6 +16,12 @@
   .text-balance {
     text-wrap: balance;
   }
+  .brand-gradient {
+    background: linear-gradient(to right, #dc2626, #7c3aed);
+  }
+  .brand-gradient-subtle {
+    background: linear-gradient(to right, rgba(220, 38, 38, 0.1), rgba(124, 58, 237, 0.1));
+  }
 }
 
 html {

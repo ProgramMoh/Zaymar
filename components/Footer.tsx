@@ -131,9 +131,12 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 pt-8 border-t border-gray-800 text-center"
         >
-          <p className="text-sm text-[#86868b]">
-            © {new Date().getFullYear()} ZAYMAR Creatives. All rights reserved.
-          </p>
+          <div className="flex items-center justify-center gap-2">
+            <p className="text-sm text-[#86868b]">
+              © {new Date().getFullYear()} ZAYMAR Creatives. All rights reserved.
+            </p>
+            <div className="w-8 h-0.5 brand-gradient rounded-full"></div>
+          </div>
         </motion.div>
       </div>
     </footer>

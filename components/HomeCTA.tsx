@@ -23,7 +23,7 @@ export default function HomeCTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/services"
-              className="px-8 py-4 bg-[#1d1d1f] text-white rounded-full text-base font-medium hover:bg-[#2d2d2f] transition-colors duration-200"
+              className="px-8 py-4 brand-gradient text-white rounded-full text-base font-medium hover:opacity-90 transition-opacity duration-200"
             >
               View Services
             </Link>
