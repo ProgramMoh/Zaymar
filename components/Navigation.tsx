@@ -22,8 +22,8 @@ export default function Navigation() {
 
   const navItems = [
     { name: 'Services', href: '/services' },
+    //{ name: 'Case Studies', href: '/case-studies' },
     { name: 'About Us', href: '/about' },
-    { name: 'Case Studies', href: '/case-studies' },
     { name: 'Contact', href: '/contact' },
   ]
 
@@ -45,9 +45,11 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
+          
+          {/* UPDATED LOGO LINK */}
           <Link
             href="/"
-            className={`text-xl lg:text-2xl font-semibold tracking-tight ${navTextColor}`}
+            className="text-xl lg:text-2xl font-semibold tracking-tight bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.red.600),theme(colors.pink.500),theme(colors.purple.600),theme(colors.pink.500),theme(colors.red.600))] bg-[length:200%_auto] animate-text-shimmer"
           >
             ZAYMAR
           </Link>
@@ -126,4 +128,3 @@ export default function Navigation() {
     </motion.nav>
   )
 }
-

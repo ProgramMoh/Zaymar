@@ -141,16 +141,31 @@ export default function ServicesPage() {
             <p className="text-xl text-[#86868b] mb-8 max-w-2xl mx-auto">
               Let's discuss how we can help elevate your brand and drive growth.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {/* Button 1: Contact Us (Solid Black) */}
               <Link
                 href="/contact"
-                className="px-8 py-4 bg-[#1d1d1f] text-white rounded-full text-base font-medium hover:bg-[#2d2d2f] transition-colors duration-200"
+                className="
+                  px-8 py-4 bg-[#1d1d1f] text-white rounded-full text-base font-medium 
+                  transition-all duration-300 ease-out
+                  hover:bg-[#2d2d2f]
+                  hover:scale-105 hover:-translate-y-1 
+                  hover:shadow-[0_10px_30px_-10px_rgba(236,72,153,0.5)]
+                "
               >
                 Contact Us
               </Link>
+
+              {/* Button 2: View Pricing (Outline) */}
               <Link
                 href="/pricing"
-                className="px-8 py-4 border border-[#1d1d1f] text-[#1d1d1f] rounded-full text-base font-medium hover:bg-[#1d1d1f] hover:text-white transition-all duration-200"
+                className="
+                  px-8 py-4 border border-[#1d1d1f] text-[#1d1d1f] rounded-full text-base font-medium 
+                  transition-all duration-300 ease-out
+                  hover:bg-[#1d1d1f] hover:text-white
+                  hover:scale-105 hover:-translate-y-1 
+                  hover:shadow-[0_10px_30px_-10px_rgba(236,72,153,0.5)]
+                "
               >
                 View Pricing
               </Link>

@@ -4,18 +4,25 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { getAssetPath } from '@/lib/utils'
 import { useCart, plans, addOns } from '@/contexts/CartContext'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 export default function PricingPage() {
   const { addPlan, addAddOn, removeAddOn, cart } = useCart()
   const [expandedPlan, setExpandedPlan] = useState<string | null>(null)
+  
+  // 1. Create a specific ref for the notification
+  const notificationRef = useRef<HTMLDivElement>(null)
 
   const handleAddToCart = (planId: string) => {
     const plan = plans.find((p) => p.id === planId)
     if (plan) {
       addPlan(plan)
-      // Scroll to top or show notification
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setExpandedPlan('all')
+      
+      // 2. UPDATED SCROLL LOGIC: Scroll to notificationRef instead of addOnsRef
+      setTimeout(() => {
+        notificationRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
     }
   }
 
@@ -73,25 +80,13 @@ export default function PricingPage() {
       {/* Pricing Section */}
       <section className="py-24 lg:py-32 bg-[#f5f5f7]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          {cart?.plan && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-8 p-4 bg-[#1d1d1f] text-white rounded-2xl text-center"
-            >
-              <p className="mb-2">You have successfully added {cart.plan.name} plan to your cart. Check some of our add-ons below to grow your business to broader horizons!</p>
-              <Link
-                href="/cart"
-                className="text-sm underline hover:no-underline"
-              >
-                View Cart →
-              </Link>
-            </motion.div>
-          )}
+          
+          {/* --- PLANS GRID --- */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-6">
             {plans.map((plan, index) => {
               const isSelected = cart?.plan?.id === plan.id
               const isPopular = plan.id === 'growth'
+              
               return (
                 <motion.div
                   key={plan.id}
@@ -106,93 +101,116 @@ export default function PricingPage() {
                   }`}
                 >
                   {isPopular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#1d1d1f] text-white text-sm font-medium rounded-full">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 text-white text-sm font-medium rounded-full z-10 shadow-lg whitespace-nowrap">
                       Popular
                     </div>
                   )}
                   {isSelected && (
-                    <div className="absolute -top-4 right-4 px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
+                    <div className="absolute -top-4 right-4 px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full z-10">
                       In Cart
                     </div>
                   )}
+                  
                   <div
-                    className={`h-full p-8 rounded-2xl bg-white border-2 transition-all duration-300 ${
+                    className={`h-full rounded-2xl transition-all duration-300 ${
                       isPopular
-                        ? 'border-[#1d1d1f] shadow-xl'
+                        ? 'p-[3px] bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 shadow-xl' 
                         : isSelected
-                        ? 'border-green-500 shadow-lg'
-                        : 'border-gray-100 hover:border-gray-200'
+                        ? 'border-2 border-green-500 shadow-lg'
+                        : 'border-2 border-gray-100 hover:border-gray-200'
                     }`}
                   >
-                    <div className="mb-6">
-                      <h3 className="text-sm font-semibold text-[#86868b] uppercase tracking-wider mb-2">
-                        {plan.name}
-                      </h3>
-                      <div className="mb-4">
-                        <span className="text-4xl lg:text-5xl font-semibold text-[#1d1d1f]">
-                          {plan.price === 0 ? 'By Inquiry' : `$${plan.price.toLocaleString()}`}
-                        </span>
-                        {plan.price > 0 && (
-                          <span className="text-[#86868b] ml-2">/month</span>
-                        )}
+                    <div className={`h-full w-full bg-white rounded-xl p-8 flex flex-col ${isPopular ? 'rounded-xl' : 'rounded-2xl'}`}>
+                      <div className="mb-6">
+                        <h3 className="text-sm font-semibold text-[#86868b] uppercase tracking-wider mb-2">
+                          {plan.name}
+                        </h3>
+                        <div className="mb-4">
+                          <span className="text-4xl lg:text-5xl font-semibold text-[#1d1d1f]">
+                            {plan.price === 0 ? 'By Inquiry' : `$${plan.price.toLocaleString()}`}
+                          </span>
+                          {plan.price > 0 && (
+                            <span className="text-[#86868b] ml-2">/month</span>
+                          )}
+                        </div>
+                        <p className="text-[#86868b] leading-relaxed">
+                          {plan.description}
+                        </p>
                       </div>
-                      <p className="text-[#86868b] leading-relaxed">
-                        {plan.description}
-                      </p>
+
+                      <ul className="space-y-3 mb-8 flex-1">
+                        {plan.features.map((feature) => (
+                          <li key={feature} className="flex items-start">
+                            <svg
+                              className="w-5 h-5 text-[#1d1d1f] mr-3 mt-0.5 flex-shrink-0"
+                              fill="none"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[#1d1d1f]">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {plan.price === 0 ? (
+                        <Link
+                          href="/contact"
+                          className={`block w-full text-center py-3 rounded-full font-medium transition-all duration-200 ${
+                            isPopular
+                              ? 'bg-[#1d1d1f] text-white hover:bg-[#2d2d2f]'
+                              : 'border border-[#1d1d1f] text-[#1d1d1f] hover:bg-[#1d1d1f] hover:text-white'
+                          }`}
+                        >
+                          Inquire
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={() => handleAddToCart(plan.id)}
+                          disabled={isSelected}
+                          className={`block w-full text-center py-3 rounded-full font-medium transition-all duration-200 ${
+                            isSelected
+                              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                              : isPopular
+                              ? 'bg-[#1d1d1f] text-white hover:bg-[#2d2d2f]'
+                              : 'border border-[#1d1d1f] text-[#1d1d1f] hover:bg-[#1d1d1f] hover:text-white'
+                          }`}
+                        >
+                          {isSelected ? 'Added to Cart' : 'Add to Cart'}
+                        </button>
+                      )}
                     </div>
-
-                    <ul className="space-y-3 mb-8">
-                      {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-start">
-                          <svg
-                            className="w-5 h-5 text-[#1d1d1f] mr-3 mt-0.5 flex-shrink-0"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="text-[#1d1d1f]">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {plan.price === 0 ? (
-                      <Link
-                        href="/contact"
-                        className={`block w-full text-center py-3 rounded-full font-medium transition-all duration-200 ${
-                          isPopular
-                            ? 'bg-[#1d1d1f] text-white hover:bg-[#2d2d2f]'
-                            : 'border border-[#1d1d1f] text-[#1d1d1f] hover:bg-[#1d1d1f] hover:text-white'
-                        }`}
-                      >
-                        Inquire
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => handleAddToCart(plan.id)}
-                        disabled={isSelected}
-                        className={`block w-full text-center py-3 rounded-full font-medium transition-all duration-200 ${
-                          isSelected
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                            : isPopular
-                            ? 'bg-[#1d1d1f] text-white hover:bg-[#2d2d2f]'
-                            : 'border border-[#1d1d1f] text-[#1d1d1f] hover:bg-[#1d1d1f] hover:text-white'
-                        }`}
-                      >
-                        {isSelected ? 'Added to Cart' : 'Add to Cart'}
-                      </button>
-                    )}
                   </div>
                 </motion.div>
               )
             })}
           </div>
 
-          {/* Add-ons Section - Separate Card */}
+          {/* --- SUCCESS NOTIFICATION (Ref Attached Here) --- */}
+          {cart?.plan && (
+            <motion.div
+              // 3. ATTACH THE REF TO THE NOTIFICATION
+              ref={notificationRef}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              // 4. ADD SCROLL MARGIN (scroll-mt-40) so it doesn't hide behind header
+              className="my-8 p-4 bg-[#1d1d1f] text-white rounded-2xl text-center shadow-lg scroll-mt-40"
+            >
+              <p className="mb-2">You have successfully added the <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-purple-500">{cart.plan.name}</span> plan to your cart. Check our add-ons below to grow your business even further!</p>
+              <Link
+                href="/cart"
+                className="text-sm underline hover:text-gray-300 transition-colors"
+              >
+                Proceed to Checkout →
+              </Link>
+            </motion.div>
+          )}
+
+          {/* --- ADD-ONS SECTION --- */}
           {cart?.plan && cart.plan.price > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -325,4 +343,3 @@ export default function PricingPage() {
     </div>
   )
 }
-

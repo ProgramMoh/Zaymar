@@ -55,15 +55,15 @@ export default function Hero() {
           >
             <Link
               href="/services"
-              className="px-10 py-4 bg-white text-[#1d1d1f] rounded-full text-base font-medium hover:bg-gray-100 transition-colors duration-200"
+              className="
+                inline-block px-10 py-4 rounded-full bg-white text-[#1d1d1f] 
+                text-base font-medium tracking-wide
+                transition-all duration-300 ease-out
+                hover:scale-105 hover:-translate-y-1 
+                hover:shadow-[0_10px_30px_-10px_rgba(236,72,153,0.4)]
+              "
             >
               Explore Services
-            </Link>
-            <Link
-              href="/contact"
-              className="px-10 py-4 border-2 border-white text-white rounded-full text-base font-medium hover:bg-white hover:text-[#1d1d1f] transition-all duration-200"
-            >
-              Get Started
             </Link>
           </motion.div>
         </motion.div>
@@ -79,12 +79,14 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
+          // Changed border to a subtle Pink/Purple tint to match theme
+          className="w-6 h-10 border-2 border-pink-500/30 rounded-full flex justify-center box-border p-1"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-white/50 rounded-full mt-2"
+            // Applied the Red->Pink->Purple gradient to the dot itself
+            className="w-1.5 h-3 bg-gradient-to-b from-red-500 via-pink-500 to-purple-500 rounded-full"
           />
         </motion.div>
       </motion.div>

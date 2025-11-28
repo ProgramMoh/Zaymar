@@ -23,12 +23,26 @@ const config: Config = {
           foreground: "hsl(var(--secondary-foreground))",
         },
         brand: {
-          red: '#dc2626', // Red for logo gradient
-          purple: '#7c3aed', // Purple for logo gradient
+          red: '#fb2c36', // Red for logo gradient
+          pink: '#f6339a', // Pink for logo gradient
+          purple: '#ad46ff', // Purple for logo gradient
         },
       },
       fontFamily: {
         sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      animation: {
+        'text-shimmer': 'text-shimmer 3s ease-out infinite alternate',
+      },
+      keyframes: {
+        'text-shimmer': {
+          '0%': {
+            'background-position': '0% 50%',
+          },
+          '100%': {
+            'background-position': '100% 50%',
+          },
+        },
       },
     },
   },
