@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
-  basePath: '/Zaymar',
-  trailingSlash: true,
+  // removed 'output: export' so Vercel can optimize site
+  // removed 'basePath' so assets load from the root correctly
+  // removed 'images: unoptimized' so Vercel can automatically resizes images
 }
 
 module.exports = nextConfig
-
