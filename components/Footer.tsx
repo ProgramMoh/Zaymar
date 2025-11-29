@@ -28,7 +28,7 @@ export default function Footer() {
               
               {/* Phone Icon - Glows Pink */}
               <a 
-                href="tel:+17144944105" 
+                href="tel:+17143632087" 
                 className="bg-[#2d2d2f] p-3 rounded-full hover:bg-[#3d3d3f] transition-all duration-300 group hover:scale-110 hover:shadow-[0_0_15px_rgba(236,72,153,0.3)]"
                 aria-label="Call Us"
               >
