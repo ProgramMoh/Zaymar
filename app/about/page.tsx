@@ -41,7 +41,7 @@ export default function AboutPage() {
       <section className="relative min-h-[60vh] flex items-center justify-center bg-[#1d1d1f] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src={getAssetPath('/images/heroabout.jpg')}
+            src='/images/heroabout.jpg'
             alt=""
             className="absolute inset-0 w-full h-full object-cover opacity-30"
           />

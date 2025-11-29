@@ -8,19 +8,19 @@ const caseStudies = [
   {
     title: 'Brand Refresh for TechStart Inc.',
     category: 'Brand Identity',
-    imageUrl: getAssetPath('/images/heromain.jpg'),
+    imageUrl: '/images/heromain.jpg',
     description: 'A complete overhaul of the brand identity to better reflect their innovative technology and appeal to a modern audience.',
   },
   {
     title: 'E-commerce Website for Green Innovations',
     category: 'Web Design & Development',
-    imageUrl: getAssetPath('/images/heroservices.jpg'),
+    imageUrl: '/images/heroservices.jpg',
     description: 'A high-converting e-commerce platform that resulted in a 300% increase in online sales within the first quarter.',
   },
   {
     title: 'Social Media Campaign for Local Fitness',
     category: 'Social Media Management',
-    imageUrl: getAssetPath('/images/heroabout.jpg'),
+    imageUrl: '/images/heroabout.jpg',
     description: 'A viral social media campaign that grew their audience by 500% and drove a significant increase in membership sign-ups.',
   },
 ];
