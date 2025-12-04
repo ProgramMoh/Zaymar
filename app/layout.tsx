@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Layout from '@/components/Layout'
 import { CartProvider } from '@/contexts/CartContext'
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: 'ZAYMAR Creatives - Full-Service Marketing & Design Agency',
@@ -19,6 +20,8 @@ export default function RootLayout({
         <CartProvider>
           <Layout>{children}</Layout>
         </CartProvider>
+                        <Analytics />
+
       </body>
     </html>
   )
